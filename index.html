@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ResERP - Property Management Software</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      background-color: #1abf9c;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      overflow-x: hidden;
+    }
+
+    .page-wrapper {
+      position: relative;
+      min-height: 100vh;
+      background-color: #1abf9c;
+    }
+
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .circle-large {
+      width: 580px;
+      height: 580px;
+      background-color: #17aa8a;
+      top: -120px;
+      right: 12%;
+    }
+
+    .circle-medium {
+      width: 400px;
+      height: 400px;
+      background-color: #148f76;
+      top: 60px;
+      right: 26%;
+    }
+
+    .page-content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+    }
+
+  /* Navbar — myreserp.com structure, adapted for teal landing page */
+    .site-navbar {
+      background: transparent;
+      padding: 0;
+    }
+
+    .site-navbar .navbar-brand img {
+      height: auto;
+      max-height: 48px;
+      width: auto;
+      display: block;
+    }
+
+    .site-navbar .menu-link,
+    .site-navbar .dropdown-toggle {
+      font-size: 17.98px;
+      line-height: 31.17px;
+      letter-spacing: -0.12px;
+      color: #fff;
+    }
+
+    .site-navbar .menu-link:hover,
+    .site-navbar .dropdown-toggle:hover {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    .site-navbar .navbar-nav .nav-link {
+      padding: 12px 15px;
+    }
+
+    .site-navbar .nav-item {
+      margin-right: 10px;
+    }
+
+    .site-navbar .nav-item:last-child {
+      margin-right: 0;
+    }
+
+    .site-navbar .red-btn {
+      background: #C9002B;
+      border-radius: 10px;
+      letter-spacing: -0.6px;
+      font-size: 20px;
+      line-height: 30px;
+      padding: 0 18px;
+    }
+
+    .site-navbar .red-btn .nav-link {
+      color: #fff;
+      font-weight: 700;
+      padding: 10px 15px;
+    }
+
+    .site-navbar .red-btn .nav-link:hover {
+      color: #fff;
+    }
+
+    .site-navbar .navbar-toggler {
+      border-color: rgba(255, 255, 255, 0.7);
+    }
+
+    .site-navbar .navbar-toggler-icon {
+      filter: brightness(0) invert(1);
+    }
+
+    .site-navbar .dropdown-toggle::after {
+      display: none;
+    }
+
+    .site-navbar .dropdown-toggle .bi {
+      font-size: 14px;
+      vertical-align: middle;
+    }
+
+    .site-navbar .features-menu .dropdown-menu {
+      right: -400px;
+      left: auto;
+      border: none;
+      border-radius: 8px;
+      min-width: 720px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .site-navbar .dropdown-item {
+      white-space: normal;
+      word-wrap: break-word;
+      margin-bottom: 15px;
+      line-height: 20px;
+      font-size: 14px;
+      color: #161C2D;
+    }
+
+    .site-navbar .dropdown-item:hover,
+    .site-navbar .dropdown-item:focus {
+      background: transparent;
+      border-bottom: 2px solid #004b93;
+    }
+
+    @media (min-width: 992px) {
+      .site-navbar .features-menu:hover .dropdown-menu {
+        display: block;
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .site-navbar .features-menu .dropdown-menu {
+        min-width: 100%;
+        right: 0;
+        padding: 6px 10px;
+      }
+
+      .site-navbar .dropdown-item {
+        margin-bottom: 0;
+        font-size: 12px;
+        border-bottom: 1px solid #212529;
+      }
+
+      .site-navbar .last .dropdown-item:last-child {
+        border-bottom: none;
+      }
+
+      .site-navbar .navbar-nav .nav-link {
+        padding: 8px 0;
+      }
+
+      .site-navbar .red-btn {
+        padding: 0 15px;
+        margin-top: 8px;
+      }
+
+      .site-navbar .red-btn .nav-link {
+        font-size: 18px;
+        font-weight: 500;
+      }
+    }
+
+  /* Hero */
+    .hero-section {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      padding: 1rem 0 3rem;
+    }
+
+    .main-inner {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-col {
+      position: relative;
+      z-index: 1;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    @media (min-width: 992px) {
+      .hero-col {
+        padding-right: 2rem;
+      }
+    }
+
+    .hero-title {
+      font-size: 72px;
+      font-weight: 900;
+      font-style: italic;
+      color: #fff;
+      line-height: 1.05;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 16px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 1.25rem;
+      max-width: 420px;
+      min-height: 3.2em;
+      line-height: 1.6;
+    }
+
+    .hero-text {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.7;
+      max-width: 420px;
+      margin-bottom: 0;
+      min-height: calc(12px * 1.7 * 7);
+    }
+
+    .hero-carousel {
+      overflow: hidden;
+      max-width: 420px;
+    }
+
+    .hero-carousel .carousel-inner {
+      position: relative;
+      overflow: hidden;
+      min-height: 260px;
+    }
+
+    .hero-carousel.carousel-fade .carousel-item {
+      display: block;
+      opacity: 0;
+      transition: opacity 0.65s ease-in-out;
+    }
+
+    .hero-carousel.carousel-fade .carousel-item.active {
+      opacity: 1;
+    }
+
+    .hero-carousel-footer {
+      max-width: 420px;
+    }
+
+    .hero-carousel .carousel-indicators {
+      position: relative;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      justify-content: flex-start;
+    }
+
+    .hero-carousel .carousel-indicators [data-bs-target] {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.45);
+      background: transparent;
+      opacity: 1;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .hero-carousel .carousel-indicators .active {
+      background: #fff;
+      border-color: #fff;
+    }
+
+    .hero-carousel-footer .btn-learn-more {
+      margin-bottom: 1.5rem;
+    }
+
+    .btn-learn-more {
+      color: #fff;
+      border: 2px solid #fff;
+      background: transparent;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1.75rem;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-learn-more:hover {
+      color: #1abf9c;
+      background: #fff;
+      border-color: #fff;
+    }
+
+  /* Login card */
+    .login-col {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .login-card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.25rem 2rem 2rem;
+      width: 100%;
+      max-width: 300px;
+      box-shadow: none;
+    }
+
+    .login-logo-wrap {
+      text-align: center;
+      margin-bottom: 1.75rem;
+    }
+
+    .login-logo-img {
+      height: 42px;
+      width: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .input-group-custom {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #555;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.35rem;
+    }
+
+    .input-group-custom i {
+      color: #444;
+      font-size: 1rem;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .input-group-custom input {
+      border: none;
+      outline: none;
+      flex: 1;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: #333;
+      background: transparent;
+      padding: 0.25rem 0;
+    }
+
+    .input-group-custom input::placeholder {
+      color: #999;
+      text-transform: uppercase;
+    }
+
+    .btn-login {
+      width: 100%;
+      background-color: #1abf9c;
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      padding: 0.65rem 1rem;
+      border-radius: 4px;
+      margin-top: 0.5rem;
+    }
+
+    .btn-login:hover {
+      background-color: #17aa8a;
+      color: #fff;
+    }
+
+    @media (max-width: 991.98px) {
+      .circle-large {
+        width: 420px;
+        height: 420px;
+        top: -80px;
+        right: -60px;
+      }
+
+      .circle-medium {
+        width: 300px;
+        height: 300px;
+        top: 40px;
+        right: 10%;
+      }
+
+      .hero-title {
+        font-size: 52px;
+      }
+
+      .login-col {
+        justify-content: center;
+        margin-top: 2rem;
+      }
+    }
+
+    @media (max-width: 767.98px) {
+      .hero-title {
+        font-size: 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page-wrapper">
+    <div class="circle circle-large"></div>
+    <div class="circle circle-medium"></div>
+
+    <div class="page-content">
+      <header class="site-navbar">
+        <nav class="navbar navbar-expand-lg pt-4 pb-4">
+          <div class="container">
+            <a class="navbar-brand" href="https://myreserp.com/">
+              <img src="assets/reserp-logo-header.webp" alt="Logo" title="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+              aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse flex-row-reverse" id="navbarSupportedContent">
+              <ul class="navbar-nav mb-lg-0 align-items-lg-center">
+                <li class="nav-item"><a href="https://myreserp.com" class="nav-link menu-link">Home</a></li>
+                <li class="nav-item"><a href="https://myreserp.com/about" class="nav-link menu-link">About</a></li>
+                <li class="nav-item"><a href="https://myreserp.com/clients" class="nav-link menu-link">Clients</a></li>
+                <li class="nav-item"><a href="https://myreserp.com/contact" class="nav-link menu-link">Contact</a></li>
+                <li class="nav-item dropdown features-menu">
+                  <a class="nav-link dropdown-toggle menu-link" href="https://myreserp.com/features/" id="featuresDropdown" role="button">
+                    Features <i class="bi bi-chevron-down"></i>
+                  </a>
+                  <div class="dropdown-menu p-3">
+                    <div class="row">
+                      <div class="col-md-3">
+                        <a class="dropdown-item" href="https://myreserp.com/features/sales-inventory" target="_blank" rel="noopener">Sales &amp; Inventory</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/supply-chain" target="_blank" rel="noopener">Supply Chain</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/recovery-crm" target="_blank" rel="noopener">Recovery CRM</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/facility-management-services" target="_blank" rel="noopener">Facility Management</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/property-management-inspection-software" target="_blank" rel="noopener">Property Management Inspection Software</a>
+                      </div>
+                      <div class="col-md-3">
+                        <a class="dropdown-item" href="https://myreserp.com/features/hrm-system" target="_blank" rel="noopener">HR Management</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/subcontracting" target="_blank" rel="noopener">Subcontracting</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/property-transfer" target="_blank" rel="noopener">Property Transfer</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/leasing" target="_blank" rel="noopener">Leasing</a>
+                      </div>
+                      <div class="col-md-3">
+                        <a class="dropdown-item" href="https://myreserp.com/features/tenant-management" target="_blank" rel="noopener">Tenant Management</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/online-rental-collection" target="_blank" rel="noopener">Online Rental Collection</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/construction-inventory-and-raw-material-management" target="_blank" rel="noopener">Construction Inventory &amp; Raw Material Management</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/staff-management" target="_blank" rel="noopener">Staff Management</a>
+                      </div>
+                      <div class="col-md-3 last">
+                        <a class="dropdown-item" href="https://myreserp.com/features/lease-and-instalment-plans" target="_blank" rel="noopener">Lease &amp; Instalment Plans</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/sales-and-transfer" target="_blank" rel="noopener">Sales &amp; Transfer Management</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/property-management-accounting-software" target="_blank" rel="noopener">Property Management &amp; Accounting Software</a>
+                        <a class="dropdown-item" href="https://myreserp.com/features/property-management-maintenance-software" target="_blank" rel="noopener">Property Management Maintenance Software</a>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item red-btn">
+                  <a class="nav-link" href="https://myreserp.com/book-free-demo">BOOK A FREE DEMO</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+
+      <main class="container main-inner">
+        <div class="row align-items-center hero-section w-100">
+          <div class="col-lg-7 col-md-6 hero-col">
+            <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel" data-bs-interval="5000" data-bs-pause="hover">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <h1 class="hero-title">ResERP.</h1>
+                  <p class="hero-subtitle">Leading Property Management Software in Pakistan</p>
+                  <p class="hero-text">
+                    ResERP is the leading Property Management Software Pakistan, offering a complete solution for real estate management. With advanced tools, it simplifies tenant management, leasing, and property transfers for growing property businesses across the country.
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <h1 class="hero-title">Features.</h1>
+                  <p class="hero-subtitle">Pakistan's No.1 Real Estate Software Solution</p>
+                  <p class="hero-text">
+                    The simplicity of the software astounded builders; by using ResERP PAKISTAN's No.1 Real Estate Software Solution, you can take control of real estate problems with a one-source solution that saves time every day.
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <h1 class="hero-title">Efficient.</h1>
+                  <p class="hero-subtitle">Simplifying Budgets, Costs, And More in Pakistan</p>
+                  <p class="hero-text">
+                    Are you a real estate developer in Pakistan juggling multiple properties and struggling with budgets, costs, and rental payments? With ResERP's powerful ERP software, manage tenant payments and expenses from one reliable platform.
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <h1 class="hero-title">Trusted.</h1>
+                  <p class="hero-subtitle">What Our Clients Say About ResERP Software</p>
+                  <p class="hero-text">
+                    My overall experience with ResERP is positive! ResERP saves significant time and effort in our everyday tasks compared with what we used to do manually. ResERP proves to be the leading ERP brand in Pakistan for builders.
+                  </p>
+                </div>
+                <div class="carousel-item">
+                  <h1 class="hero-title">Connect.</h1>
+                  <p class="hero-subtitle">Speak to Our Team About Your Property Needs</p>
+                  <p class="hero-text">
+                    Speak to our team today to learn how our Property Management Software Pakistan can simplify your real estate operations. At ResERP, we provide innovative ERP software designed to streamline property management with confidence.
+                  </p>
+                </div>
+              </div>
+              <div class="hero-carousel-footer">
+                <a id="heroCta" href="https://myreserp.com/book-free-demo" class="btn btn-learn-more rounded-pill" target="_blank" rel="noopener">LEARN MORE</a>
+                <div class="carousel-indicators hero-indicators">
+                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4" aria-label="Slide 5"></button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-5 col-md-6 login-col">
+            <div class="login-card">
+              <div class="login-logo-wrap">
+                <img src="assets/reserp-logo.png" alt="ResERP" class="login-logo-img">
+              </div>
+
+              <div class="input-group-custom">
+                <i class="bi bi-person"></i>
+                <input type="text" placeholder="ENTER EMAIL" aria-label="Email">
+              </div>
+
+              <div class="input-group-custom">
+                <i class="bi bi-lock"></i>
+                <input type="password" placeholder="ENTER PASSWORD" aria-label="Password">
+              </div>
+
+              <button type="button" class="btn btn-login">LOGIN</button>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    (function () {
+      var carouselEl = document.getElementById('heroCarousel');
+      var ctaEl = document.getElementById('heroCta');
+      var ctaLinks = [
+        'https://myreserp.com/book-free-demo',
+        'https://myreserp.com/features/',
+        'https://myreserp.com/book-free-demo',
+        'https://myreserp.com/clients',
+        'https://myreserp.com/contact'
+      ];
+
+      carouselEl.addEventListener('slid.bs.carousel', function (event) {
+        ctaEl.href = ctaLinks[event.to] || ctaLinks[0];
+      });
+    })();
+  </script>
+</body>
+</html>
