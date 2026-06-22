@@ -8,262 +8,31 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html,
     body {
-      margin: 0;
-      padding: 0;
+      background: url('assets/reserp login page background.JPG.jpeg') center / cover no-repeat fixed;
       min-height: 100vh;
-      background-image: url('assets/reserp login page background.JPG.jpeg');
-      background-size: cover;
-      background-position: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      overflow-x: hidden;
     }
 
-    .page-wrapper {
-      position: relative;
-      top: 200px;
+    .login-card {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      max-width: 340px;
     }
 
-    .circle {
-      position: absolute;
-      border-radius: 50%;
-      z-index: 0;
+    .login-card .form-control,
+    .login-card .form-control::placeholder {
+      font-size: 0.6875rem;
     }
 
-    .page-content {
-      position: relative;
-      z-index: 1;
+    .login-card .input-group-text {
+      font-size: 0.75rem;
     }
 
-    /* Navbar — myreserp.com structure, adapted for teal landing page */
-    .site-navbar {
-      background: transparent;
-      padding: 0;
-    }
-
-    .site-navbar .navbar-brand img {
-      height: auto;
-      max-height: 48px;
-      width: auto;
-      display: block;
-    }
-
-    .site-navbar .menu-link,
-    .site-navbar .dropdown-toggle {
-      font-size: 17.98px;
-      line-height: 31.17px;
-      letter-spacing: -0.12px;
-      color: #fff;
-    }
-
-    .site-navbar .menu-link:hover,
-    .site-navbar .dropdown-toggle:hover {
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    .site-navbar .navbar-nav .nav-link {
-      padding: 12px 15px;
-    }
-
-    .site-navbar .nav-item {
-      margin-right: 10px;
-    }
-
-    .site-navbar .nav-item:last-child {
-      margin-right: 0;
-    }
-
-    .site-navbar .red-btn {
-      background: #C9002B;
-      border-radius: 10px;
-      letter-spacing: -0.6px;
-      font-size: 20px;
-      line-height: 30px;
-      padding: 0 18px;
-    }
-
-    .site-navbar .red-btn .nav-link {
-      color: #fff;
-      font-weight: 700;
-      padding: 10px 15px;
-    }
-
-    .site-navbar .red-btn .nav-link:hover {
-      color: #fff;
-    }
-
-    .site-navbar .navbar-toggler {
-      border-color: rgba(255, 255, 255, 0.7);
-    }
-
-    .site-navbar .navbar-toggler-icon {
-      filter: brightness(0) invert(1);
-    }
-
-    .site-navbar .dropdown-toggle::after {
-      display: none;
-    }
-
-    .site-navbar .dropdown-toggle .bi {
-      font-size: 14px;
-      vertical-align: middle;
-    }
-
-    .site-navbar .features-menu .dropdown-menu {
-      right: -400px;
-      left: auto;
-      border: none;
-      border-radius: 8px;
-      min-width: 720px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    }
-
-    .site-navbar .dropdown-item {
-      white-space: normal;
-      word-wrap: break-word;
-      margin-bottom: 15px;
-      line-height: 20px;
-      font-size: 14px;
-      color: #161C2D;
-    }
-
-    .site-navbar .dropdown-item:hover,
-    .site-navbar .dropdown-item:focus {
-      background: transparent;
-      border-bottom: 2px solid #004b93;
-    }
-
-    @media (min-width: 992px) {
-      .site-navbar .features-menu:hover .dropdown-menu {
-        display: block;
-      }
-    }
-
-    @media (max-width: 991.98px) {
-      .site-navbar .features-menu .dropdown-menu {
-        min-width: 100%;
-        right: 0;
-        padding: 6px 10px;
-      }
-
-      .site-navbar .dropdown-item {
-        margin-bottom: 0;
-        font-size: 12px;
-        border-bottom: 1px solid #212529;
-      }
-
-      .site-navbar .last .dropdown-item:last-child {
-        border-bottom: none;
-      }
-
-      .site-navbar .navbar-nav .nav-link {
-        padding: 8px 0;
-      }
-
-      .site-navbar .red-btn {
-        padding: 0 15px;
-        margin-top: 8px;
-      }
-
-      .site-navbar .red-btn .nav-link {
-        font-size: 18px;
-        font-weight: 500;
-      }
-    }
-
-    /* Hero */
-    .hero-section {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      padding: 1rem 0 3rem;
-      width: 100vw;
-    }
-
-    .main-inner {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .hero-col {
-      position: relative;
-      z-index: 1;
-      max-width: 100%;
-      overflow: hidden;
-    }
-
-    @media (min-width: 992px) {
-      .hero-col {
-        padding-right: 2rem;
-      }
-    }
-
-    .hero-title {
-      font-size: 72px;
-      font-weight: 900;
-      font-style: italic;
-      color: #fff;
-      line-height: 1.05;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-subtitle {
-      font-size: 16px;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 1.25rem;
-      max-width: 420px;
-      min-height: 3.2em;
-      line-height: 1.6;
-    }
-
-    .hero-text {
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.8);
-      line-height: 1.7;
-      max-width: 420px;
-      margin-bottom: 0;
-      min-height: calc(12px * 1.7 * 7);
-    }
-
-    .hero-carousel {
-      overflow: hidden;
-      max-width: 420px;
-    }
-
-    .hero-carousel .carousel-inner {
-      position: relative;
-      overflow: hidden;
-      min-height: 260px;
-    }
-
-    .hero-carousel.carousel-fade .carousel-item {
-      display: block;
-      opacity: 0;
-      transition: opacity 0.65s ease-in-out;
-    }
-
-    .hero-carousel.carousel-fade .carousel-item.active {
-      opacity: 1;
-    }
-
-    .hero-carousel-footer {
-      max-width: 420px;
-    }
-
+  /* carousel dot indicators */
     .hero-carousel .carousel-indicators {
       position: relative;
       margin: 0;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      justify-content: flex-start;
+      gap: 0.5rem;
     }
 
     .hero-carousel .carousel-indicators [data-bs-target] {
@@ -274,9 +43,6 @@
       background: transparent;
       opacity: 1;
       margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      transition: background-color 0.3s ease, border-color 0.3s ease;
     }
 
     .hero-carousel .carousel-indicators .active {
@@ -284,262 +50,129 @@
       border-color: #fff;
     }
 
-    .hero-carousel-footer .btn-learn-more {
-      margin-bottom: 1.5rem;
-    }
-
-    .btn-learn-more {
-      color: #fff;
-      border: 2px solid #fff;
-      background: transparent;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      padding: 0.5rem 1.75rem;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-learn-more:hover {
-      color: #1abf9c;
-      background: #fff;
-      border-color: #fff;
-    }
-
-    /* Login card */
-    .login-col {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .login-card {
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 6px;
-      padding: 2.25rem 2rem 2rem;
-      width: 100vw;
-      height: 24rem;
-      max-width: 340px;
-      box-shadow: none;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .login-logo-wrap {
-      text-align: center;
-      margin-bottom: 1.75rem;
-    }
-
-    .login-logo-img {
-      height: 36px;
-      width: auto;
-      display: block;
-      margin: 0 auto;
-    }
-
-    .input-group-custom {
-      display: flex;
-      align-items: center;
-      border: 1px solid white;
-      width: 100%;
-      background: white;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-      padding: 0.35rem;
-    }
-
-    .input-group-custom i {
-      color: #444;
-      font-size: 1rem;
-      margin-right: 0.75rem;
-      flex-shrink: 0;
-    }
-
-    .input-group-custom input {
-      border: none;
-      outline: none;
-      flex: 1;
-      font-weight: 600;
-      font-size: 11px;
-      letter-spacing: 0.06em;
-      color: #333;
-      padding: 0.25rem;
-    }
-
-    .input-group-custom input::placeholder {
-      color: #999;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .btn-login {
-      width: 40%;
-      background-color: white;
-      border: 1px solid white;
-      font-weight: 600;
-      color: grey;
-      font-size: 0.85rem;
-      padding: 0.65rem 1rem;
-      border-radius: 24px;
-      margin-top: 0.5rem;
-    }
-
-    .btn-login:hover {
-      background-color: #295868;
-      color: white;
-    }
-
-    .remember-me {
-      display: flex;
-      width: 100%;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 1.5rem;
-      font-size: 0.75rem;
-      color: #fff;
-    }
-
-    .login-title-wrap {
-      color: #fff;
-      font-size: 24px;
-      font-weight: 600;
-
-      text-align: center;
-    }
-
-    @media (max-width: 991.98px) {
-      .hero-title {
-        font-size: 52px;
-      }
-
-      .login-col {
-        justify-content: center;
-        margin-top: 2rem;
-      }
+    .hero-carousel .carousel-inner {
+      min-height: 260px;
     }
 
     @media (max-width: 767.98px) {
-      .hero-title {
-        font-size: 42px;
+      .hero-carousel .carousel-inner {
+        min-height: 200px;
       }
     }
   </style>
 </head>
 
-<body>
-  <div class="page-wrapper">
-
-    <div class="page-content">
-
-      <main class="container-fluid main-inner">
-        <div class="row align-items-center justify-content-center hero-section" style="padding-left: 100px;">
-          <div class="col-lg-4 col-md-4 hero-col">
-            <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel"
-              data-bs-interval="5000" data-bs-pause="hover">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <h1 class="hero-title">ResERP.</h1>
-                  <p class="hero-subtitle">Leading Property Management Software in Pakistan</p>
-                  <p class="hero-text">
-                    ResERP is the leading Property Management Software Pakistan, offering a complete solution for real
-                    estate management. With advanced tools, it simplifies tenant management, leasing, and property
-                    transfers for growing property businesses across the country.
-                  </p>
-                </div>
-                <div class="carousel-item">
-                  <h1 class="hero-title">Features.</h1>
-                  <p class="hero-subtitle">Pakistan's No.1 Real Estate Software Solution</p>
-                  <p class="hero-text">
-                    The simplicity of the software astounded builders; by using ResERP PAKISTAN's No.1 Real Estate
-                    Software Solution, you can take control of real estate problems with a one-source solution that
-                    saves time every day.
-                  </p>
-                </div>
-                <div class="carousel-item">
-                  <h1 class="hero-title">Efficient.</h1>
-                  <p class="hero-subtitle">Simplifying Budgets, Costs, And More in Pakistan</p>
-                  <p class="hero-text">
-                    Are you a real estate developer in Pakistan juggling multiple properties and struggling with
-                    budgets, costs, and rental payments? With ResERP's powerful ERP software, manage tenant payments and
-                    expenses from one reliable platform.
-                  </p>
-                </div>
-                <div class="carousel-item">
-                  <h1 class="hero-title">Trusted.</h1>
-                  <p class="hero-subtitle">What Our Clients Say About ResERP Software</p>
-                  <p class="hero-text">
-                    My overall experience with ResERP is positive! ResERP saves significant time and effort in our
-                    everyday tasks compared with what we used to do manually. ResERP proves to be the leading ERP brand
-                    in Pakistan for builders.
-                  </p>
-                </div>
-                <div class="carousel-item">
-                  <h1 class="hero-title">Connect.</h1>
-                  <p class="hero-subtitle">Speak to Our Team About Your Property Needs</p>
-                  <p class="hero-text">
-                    Speak to our team today to learn how our Property Management Software Pakistan can simplify your
-                    real estate operations. At ResERP, we provide innovative ERP software designed to streamline
-                    property management with confidence.
-                  </p>
-                </div>
-              </div>
-              <div class="hero-carousel-footer">
-                <a id="heroCta" href="https://myreserp.com/book-free-demo" class="btn btn-learn-more rounded-pill"
-                  target="_blank" rel="noopener">LEARN MORE</a>
-                <div class="carousel-indicators hero-indicators">
-                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
-                    aria-current="true" aria-label="Slide 1"></button>
-                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
-                    aria-label="Slide 2"></button>
-                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
-                    aria-label="Slide 3"></button>
-                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"
-                    aria-label="Slide 4"></button>
-                  <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"
-                    aria-label="Slide 5"></button>
-                </div>
-              </div>
+<body class="min-vh-100">
+  <main class="container min-vh-100 d-flex align-items-center py-4 py-lg-5">
+    <div class="row align-items-center justify-content-center g-4 g-lg-5 w-100 mx-0">
+      <div class="col-12 col-lg-6">
+        <div id="heroCarousel" class="carousel slide carousel-fade hero-carousel" data-bs-ride="carousel"
+          data-bs-interval="5000" data-bs-pause="hover">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <h1 class="display-1 fst-italic fw-black text-white mb-2">ResERP.</h1>
+              <p class="fw-bold text-white mb-3">Leading Property Management Software in Pakistan</p>
+              <p class="small text-white text-opacity-75 mb-0">
+                ResERP is the leading Property Management Software Pakistan, offering a complete solution for real
+                estate management. With advanced tools, it simplifies tenant management, leasing, and property
+                transfers for growing property businesses across the country.
+              </p>
+            </div>
+            <div class="carousel-item">
+              <h1 class="display-1 fst-italic fw-black text-white mb-2">Features.</h1>
+              <p class="fw-bold text-white mb-3">Pakistan's No.1 Real Estate Software Solution</p>
+              <p class="small text-white text-opacity-75 mb-0">
+                The simplicity of the software astounded builders; by using ResERP PAKISTAN's No.1 Real Estate
+                Software Solution, you can take control of real estate problems with a one-source solution that
+                saves time every day.
+              </p>
+            </div>
+            <div class="carousel-item">
+              <h1 class="display-1 fst-italic fw-black text-white mb-2">Efficient.</h1>
+              <p class="fw-bold text-white mb-3">Simplifying Budgets, Costs, And More in Pakistan</p>
+              <p class="small text-white text-opacity-75 mb-0">
+                Are you a real estate developer in Pakistan juggling multiple properties and struggling with
+                budgets, costs, and rental payments? With ResERP's powerful ERP software, manage tenant payments and
+                expenses from one reliable platform.
+              </p>
+            </div>
+            <div class="carousel-item">
+              <h1 class="display-1 fst-italic fw-black text-white mb-2">Trusted.</h1>
+              <p class="fw-bold text-white mb-3">What Our Clients Say About ResERP Software</p>
+              <p class="small text-white text-opacity-75 mb-0">
+                My overall experience with ResERP is positive! ResERP saves significant time and effort in our
+                everyday tasks compared with what we used to do manually. ResERP proves to be the leading ERP brand
+                in Pakistan for builders.
+              </p>
+            </div>
+            <div class="carousel-item">
+              <h1 class="display-1 fst-italic fw-black text-white mb-2">Connect.</h1>
+              <p class="fw-bold text-white mb-3">Speak to Our Team About Your Property Needs</p>
+              <p class="small text-white text-opacity-75 mb-0">
+                Speak to our team today to learn how our Property Management Software Pakistan can simplify your
+                real estate operations. At ResERP, we provide innovative ERP software designed to streamline
+                property management with confidence.
+              </p>
             </div>
           </div>
-
-          <div class="col-lg-4 col-md-4 login-col">
-            <div class="login-card">
-              <div class="login-logo-wrap">
-                <img src="assets/reserp-logo.png" alt="ResERP" class="login-logo-img">
-              </div>
-              <div class="login-title-wrap">
-                <p>LOG IN</p>
-              </div>
-              <div class="input-group-custom">
-                <i class="bi bi-person-fill"></i>
-                <input type="text" placeholder="ENTER EMAIL" aria-label="Email">
-              </div>
-
-              <div class="input-group-custom">
-                <i class="bi bi-lock-fill"></i>
-
-                <input type="password" id="password" placeholder="ENTER PASSWORD" aria-label="Password">
-
-                <i class="bi bi-eye-slash toggle-password" id="togglePassword" style="cursor: pointer;"></i>
-              </div>
-              <div class="remember-me">
-                <div class="form-check">
-                  <input type="checkbox" id="rememberMe" class="form-check-input">
-                  <label for="rememberMe" class="form-check-label">Remember Me</label>
-                </div>
-                <a href="#" class="text-white text-decoration-none">Forgot Password</a>
-              </div>
-              <button type="button" class="btn btn-login">LOGIN</button>
+          <div class="mt-4">
+            <a id="heroCta" href="https://myreserp.com/book-free-demo"
+              class="btn btn-outline-light rounded-pill px-4 mb-3" target="_blank" rel="noopener">LEARN MORE</a>
+            <div class="carousel-indicators justify-content-start">
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+              <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="4"
+                aria-label="Slide 5"></button>
             </div>
           </div>
         </div>
-      </main>
+      </div>
+
+      <div class="col-12 col-lg-5 col-xl-4">
+        <div class="login-card p-4 mx-auto w-100">
+          <div class="text-center mb-3">
+            <img src="assets/reserp-logo.png" alt="ResERP" height="36">
+          </div>
+          <p class="text-center text-white fw-semibold fs-5 mb-4">LOG IN</p>
+
+          <div class="input-group input-group-sm mb-3 bg-white rounded">
+            <span class="input-group-text border-0 bg-white py-2"><i class="bi bi-person-fill"></i></span>
+            <input type="text" class="form-control form-control-sm border-0 py-2" placeholder="ENTER EMAIL"
+              aria-label="Email">
+          </div>
+
+          <div class="input-group input-group-sm mb-3 bg-white rounded">
+            <span class="input-group-text border-0 bg-white py-2"><i class="bi bi-lock-fill"></i></span>
+            <input type="password" id="password" class="form-control form-control-sm border-0 py-2"
+              placeholder="ENTER PASSWORD" aria-label="Password">
+            <button type="button" class="input-group-text border-0 bg-white py-2" id="togglePassword"
+              aria-label="Toggle password visibility">
+              <i class="bi bi-eye-slash"></i>
+            </button>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mb-3 small text-white">
+            <div class="form-check">
+              <input type="checkbox" id="rememberMe" class="form-check-input">
+              <label for="rememberMe" class="form-check-label">Remember Me</label>
+            </div>
+            <a href="#" class="text-white text-decoration-none">Forgot Password</a>
+          </div>
+
+          <div class="text-center">
+            <button type="button" class="btn btn-light rounded-pill px-5 fw-semibold text-secondary">LOGIN</button>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+  </main>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
     (function () {
@@ -556,19 +189,18 @@
       carouselEl.addEventListener('slid.bs.carousel', function (event) {
         ctaEl.href = ctaLinks[event.to] || ctaLinks[0];
       });
+
+      var password = document.getElementById('password');
+      var togglePassword = document.getElementById('togglePassword');
+      var toggleIcon = togglePassword.querySelector('i');
+
+      togglePassword.addEventListener('click', function () {
+        var isPassword = password.type === 'password';
+        password.type = isPassword ? 'text' : 'password';
+        toggleIcon.classList.toggle('bi-eye', isPassword);
+        toggleIcon.classList.toggle('bi-eye-slash', !isPassword);
+      });
     })();
-
-    const password = document.getElementById('password');
-    const togglePassword = document.getElementById('togglePassword');
-
-    togglePassword.addEventListener('click', () => {
-      const isPassword = password.type === 'password';
-
-      password.type = isPassword ? 'text' : 'password';
-
-      togglePassword.classList.toggle('bi-eye');
-      togglePassword.classList.toggle('bi-eye-slash');
-    });
   </script>
 </body>
 
